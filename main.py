@@ -4,6 +4,11 @@ import plotly.express as px
 
 # Data source: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv
 
+def extract_subarea(place):
+    return place[0]
+
+def extract_area(place):
+    return place[1]
 # Fetch data and clean it up
 def fetch_eq_data(period='daily', region="Worldwide", min_mag=1):
     url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/{}.csv'
@@ -17,7 +22,19 @@ def fetch_eq_data(period='daily', region="Worldwide", min_mag=1):
     df_earthquake = pd.read_csv(new_url)
     df_earthquake = df_earthquake[['time', 'latitude', 'longitude', 'mag', 'place']]
 
-    # extract sub-area in place
+    # extract sub-area in place columns
     place_list = df_earthquake['place'].str.split(',')
+    df_earthquake['subarea'] = place_list.apply(extract_subarea)
+    df_earthquake['area'] = place_list.apply(extract_area)
+    df_earthquake = df_earthquake.drop(columns=['place'], axis=1)
+
+    # filter data based on min. threshold (magnitude)
+    if isinstance(min_mag, int) and min_mag > 0:
+        df_earthquake = df_earthquake[df_earthquake['mag'] >= min_mag]
+    else:
+        df_earthquake = df_earthquake[df_earthquake['mag'] > 0]
+
+    # covert 'time' to panda(pd) datetime
+    df_earthquake['time'] = pd.to_dattime[df_earthquake['time']]
     
 # Create visualizer
