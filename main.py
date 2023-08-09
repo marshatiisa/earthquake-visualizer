@@ -47,7 +47,7 @@ def fetch_eq_data(period='daily', region="Worldwide", min_mag=1):
         df_earthquake = df_earthquake[df_earthquake['mag'] > 0]
 
     # covert 'time' to panda(pd) datetime
-    df_earthquake['time'] = pd.to_dattime[df_earthquake['time']]
+    df_earthquake['time'] = pd.to_datetime(df_earthquake['time'])
 
     # set lat and long to some default if not found
     if region in df_earthquake['area'].to_list():
@@ -88,15 +88,21 @@ def visualize_eq_data(period='daily', region='Worldwide', min_mag=1):
     fig = px.scatter_mapbox(
         data_frame=df_earthquake,
         lat='latitude',
-        long='longitude',
+        lon='longitude',
         center=dict(lat=center_lat, lon=center_long),
         size='mag',
         color='mag',
-        hover_name='sub_area',
+        # hover_name='sub_area',
         zoom=1,
         mapbox_style='carto-positron',
         animation_frame=animation_frame_col,
         title='Earthquakes'
     )
+
+    fig.show()
+
+    return None
+
+visualize_eq_data(period='monthly', region='New York', min_mag=1)
 
     
