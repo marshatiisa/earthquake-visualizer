@@ -28,7 +28,10 @@ The Earthquake Visualizer is a basic Python project that allows users to visuali
 3. Install required dependencies:
 
    ```
-   pip install -r requirements.txt
+   pip3 install pandas
+   ```
+   ```
+   pip3 install plotly
    ```
 
 ## Usage
@@ -39,8 +42,8 @@ The Earthquake Visualizer is a basic Python project that allows users to visuali
    python app.py
    ```
 
-2. Open your web browser and go to `http://localhost:5000` to see the Earthquake Visualizer in action.
+2. Click play button on your IDE TO open your web browser and see the Earthquake Visualizer in action. Change dates to see seismic activity throughout the world.
 
 ## Data Source
 
-This project fetches earthquake data from a public API. The specific data source is [USGS Earthquake Hazards Program](https://earthquake.usgs.gov/), and we are using their data to display earthquakes on the map.
+This project fetches earthquake data from a public API. The specific data source is (https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.csv), and we are using their data to display earthquakes on the map.
