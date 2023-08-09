@@ -2,6 +2,8 @@
 
 The Earthquake Visualizer is a basic Python project that allows users to visualize earthquake data on a world map. This project is a simple starting point for understanding earthquake data and how to plot it on a map.
 
+![Screenshot](assets/earthquake-visualizer.png)
+
 ## Features
 
 - Fetch earthquake data from a public API.
