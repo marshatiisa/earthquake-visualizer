@@ -16,7 +16,7 @@ The Earthquake Visualizer is a basic Python project that allows users to visuali
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/earthquake-visualizer.git
+   git clone https://github.com/marsha-tiisa/earthquake-visualizer.git
    ```
 
 2. Change directory to the project folder:
